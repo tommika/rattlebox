@@ -13,7 +13,7 @@ to work with the MediaTek 3339 GPS receiver. In particular, for logging and
 exporting GPS track data (in GPX format) that can be imported into
 [The Wanderlog](https://github.com/tommika/tommika/blob/main/wanderlog/wanderlog.md).
 
-For example, using rattlebox, [this GPS data file](./doc/SunkMinRoad.gpx) was
+For example, using rattlebox, [this GPS data file](./doc/SunkMineRoad.gpx) was
 exported and then imported into Wanderlog (as shown here): 
 
 ![alt sugarloaf](./doc/SunkMineRoad.jpg "Sugar Loaf")
