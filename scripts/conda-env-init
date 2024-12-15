@@ -1,0 +1,24 @@
+#!/bin/bash
+# Copyright (c) 2024 Thomas Mikalsen. Subject to the MIT License 
+# vim: ts=4 sw=4 expandtab
+
+
+THIS_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+set -e # exit if there are any errors
+set -u # exit on reference to unset variable
+set -o pipefail # dont mask pipeline failures
+
+if [ $# -ne 1 ]; then
+    echo "usage: $0 <conda-env-file>"
+    exit 1
+fi
+ENV_FILE=${1}
+
+ENV_NAME=$(sed -n "s/^name: \(.*\)/\1/p" ${ENV_FILE})
+if { conda env list | grep "^${ENV_NAME} "; }; then
+	echo "updating existing conda env ${ENV_NAME}"
+	conda env update --prune -f ${ENV_FILE}
+else
+	echo "conda env ${ENV_NAME} does not exist; creating it"
+	conda env create -f ${ENV_FILE}
+fi

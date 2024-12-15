@@ -1,0 +1,10 @@
+# conda env create -f environment.yml
+name: rattlebox
+dependencies:
+  - python=3.12
+  - pyserial
+  - pydantic
+  - pip
+  - pip:
+    - types-pyserial
+  - mypy # used for linting
