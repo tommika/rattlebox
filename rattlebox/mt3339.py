@@ -171,8 +171,9 @@ class Driver:
             block = bytes[i:i+16]
             chk = checksum(block[:15])
             if chk != block[15]:
+                # checksum does not match; skip this block
                 if self.debug:
-                    print(f"warn: checksum does not match: expected {chk}; computed {block[15]}")
+                    print(f"checksum does not match: expected {block[15]}; computed {chk}")
                 continue
             wp = gpx.Point()
             wp.ts = int.from_bytes(block[0:4],"little")
